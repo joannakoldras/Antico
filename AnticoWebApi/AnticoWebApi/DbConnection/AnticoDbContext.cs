@@ -15,6 +15,5 @@ namespace AnticoWebApi.DbConnection
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<User> Users { get; set; }
 
-        
     }
 }

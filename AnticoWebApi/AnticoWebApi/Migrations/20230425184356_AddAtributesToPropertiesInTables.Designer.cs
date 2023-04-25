@@ -3,6 +3,7 @@ using AnticoWebApi.DbConnection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnticoWebApi.Migrations
 {
     [DbContext(typeof(AnticoDbContext))]
-    partial class AnticoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230425184356_AddAtributesToPropertiesInTables")]
+    partial class AddAtributesToPropertiesInTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

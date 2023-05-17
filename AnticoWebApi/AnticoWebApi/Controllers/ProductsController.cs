@@ -1,4 +1,6 @@
 ﻿using AnticoWebApi.DbModels;
+using AnticoWebApi.Services;
+using AnticoWebApi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnticoWebApi.Controllers
@@ -7,13 +9,16 @@ namespace AnticoWebApi.Controllers
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
-        [HttpGet(Name = "Products")]
-        public IEnumerable<Product> GetAllProducts()
-        {
-            return new List <Product>()
-            {
+        private IProductFinderService _productFinderService { get; set; }
+        public ProductsController() 
+        { 
+            _productFinderService = new ProductFinderService();
+        }
 
-            }; 
+        [HttpGet(Name = "Products")]
+        public IEnumerable<ProductViewModel> GetAllProducts()
+        {
+            return _productFinderService.GetAllProducts(); 
         }
     }
 }

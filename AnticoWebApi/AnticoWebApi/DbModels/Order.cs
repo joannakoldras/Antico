@@ -21,6 +21,6 @@ namespace AnticoWebApi.DbModels
 
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public virtual User Id_ProductId { get; set; }
+        public virtual Product Id_ProductId { get; set; }
     }
 }

@@ -152,7 +152,7 @@ namespace AnticoWebApi.Migrations
 
             modelBuilder.Entity("AnticoWebApi.DbModels.Order", b =>
                 {
-                    b.HasOne("AnticoWebApi.DbModels.User", "Id_ProductId")
+                    b.HasOne("AnticoWebApi.DbModels.Product", "Id_ProductId")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)

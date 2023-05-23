@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "p1U/eMLpQb/5nUa9pgo79E+ftdh83MQCMfhA5xW+dUMNRMTKMK8wUUmNcKuCCGBVvs/7tt0Rzy2yv1/eHvy+yA==",
+  "dgSpecHash": "zzcg5vBsm0Ct20mhUgklI9RJHSVeJBKdTnXqwAkegjvUg7i9XJdMmCfHbwgC7gMHRw/1HHe3Xlqgy5YAUr8jGQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\joannakoldras\\Antico\\AnticoWebApi\\AnticoWebApi\\AnticoWebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\joannakoldras\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\joannakoldras\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\joannakoldras\\.nuget\\packages\\fluentassertions\\6.11.0\\fluentassertions.6.11.0.nupkg.sha512",
     "C:\\Users\\joannakoldras\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\joannakoldras\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\joannakoldras\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

@@ -2,8 +2,11 @@
 using AnticoWebApi.DbModels;
 using AnticoWebApi.Mappers;
 using AnticoWebApi.ViewModels;
+using FluentAssertions.Common;
+using Microsoft.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AnticoWebApi.Services
 {
@@ -12,13 +15,11 @@ namespace AnticoWebApi.Services
         public IEnumerable<ProductViewModel> GetAllProducts() 
         {
             IEnumerable<Product> dbProducts;
-            //var optionsBuilder = new DbContextOptionsBuilder<AnticoDbContext>();
-            //optionsBuilder.UseSqlServer();
             using (var db = new AnticoDbContext())
             {
-                dbProducts = db.Products.ToList(); 
+                dbProducts = db.Products.ToList();
             }
-            
+
             var vMProducts = new List<ProductViewModel>(); 
 
             foreach (var item in dbProducts)

@@ -48,5 +48,24 @@ namespace AnticoWebApi.Services
             }
             return vMProducts;
         }
+
+        public IEnumerable<ProductViewModel> FindProducts(string searchString)
+        {
+            IEnumerable<Product> dbProducts;
+            using (var db = new AnticoDbContext())
+            {
+                dbProducts = db.Products.Where(x => x.Description.ToLower().Contains(searchString.ToLower()) || 
+                x.Name.ToLower().Contains(searchString.ToLower())).ToList();  
+            }
+            var vMProducts = new List<ProductViewModel>(); 
+            
+            foreach(var item in dbProducts)
+            {
+                var vMProduct = item.ToProductViewModel();
+                vMProducts.Add(vMProduct);
+            }
+
+            return vMProducts; 
+        }
     }
 }

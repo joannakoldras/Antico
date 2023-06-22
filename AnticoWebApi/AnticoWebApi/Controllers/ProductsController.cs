@@ -20,5 +20,11 @@ namespace AnticoWebApi.Controllers
         {
             return _productFinderService.GetAllProducts(); 
         }
+
+        [HttpGet("{searchString}")]
+        public IEnumerable<ProductViewModel> FindProducts(string searchString)
+        {
+            return _productFinderService.FindProducts(searchString);
+        }
     }
 }

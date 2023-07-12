@@ -32,11 +32,12 @@ namespace AnticoWebApi.Services
 
         public IEnumerable<ProductViewModel> GetProductsByCategory(string category)
         {
-            IEnumerable<Product> dbCategoryProducts; 
+            IEnumerable<Product> dbCategoryProducts = new List<Product>(); 
             using (var db = new AnticoDbContext())
             {
                 var dbCategory = db.ProductCategories.FirstOrDefault(x => x.Name.ToLower() == category.ToLower());
-                dbCategoryProducts = db.Products.Where(x => x.CategoryId == dbCategory.Id).ToList(); 
+                if (dbCategory != null)
+                    dbCategoryProducts = db.Products.Where(x => x.CategoryId == dbCategory.Id).ToList(); 
 
             }
             var vMProducts = new List<ProductViewModel>();
@@ -66,6 +67,25 @@ namespace AnticoWebApi.Services
             }
 
             return vMProducts; 
+        }
+
+        public IEnumerable<ProductViewModel> FindProductsByCategory(string category)
+        {
+            IEnumerable<Product> dbProducts;
+            using (var db = new AnticoDbContext())
+            {
+                var categoryFromDb = db.ProductCategories.Where(x => x.Name.ToLower() == category.ToLower()).FirstOrDefault();
+                dbProducts = db.Products.Where(x => x.CategoryId == categoryFromDb.Id); 
+            }
+            var vMProducts = new List<ProductViewModel>();
+
+            foreach (var item in dbProducts)
+            {
+                var vMProduct = item.ToProductViewModel();
+                vMProducts.Add(vMProduct);
+            }
+
+            return vMProducts;
         }
     }
 }

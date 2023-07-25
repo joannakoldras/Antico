@@ -1,5 +1,6 @@
 ﻿using AnticoWebApi.DbModels;
 using AnticoWebApi.ViewModels;
+using AnticoWebApi.ViewModels.Enums;
 using System.Runtime.CompilerServices;
 
 namespace AnticoWebApi.Mappers
@@ -9,9 +10,10 @@ namespace AnticoWebApi.Mappers
         public static ProductViewModel ToProductViewModel(this Product product)
         {
             var productVM = new ProductViewModel(); 
+            productVM.Id = product.Id; 
             productVM.Name = product.Name; 
             productVM.Description = product.Description;
-            //productVM.Category = product.Category; mechanizm konwertowania string na enum
+            productVM.Category = (ProductCategoryEnum)product.CategoryId; //mechanizm konwertowania string na enum
             productVM.IsAvaliable = product.IsAvaliable;
             productVM.FilePathPhoto = product.FilePathPhoto;
             productVM.Price = product.Price;

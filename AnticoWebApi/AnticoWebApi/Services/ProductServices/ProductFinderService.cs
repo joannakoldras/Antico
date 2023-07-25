@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AnticoWebApi.Services
+namespace AnticoWebApi.Services.ProductServices
 {
     public class ProductFinderService : IProductFinderService
     {
-        public IEnumerable<ProductViewModel> GetAllProducts() 
+        public IEnumerable<ProductViewModel> GetAllProducts()
         {
             IEnumerable<Product> dbProducts;
             using (var db = new AnticoDbContext())
@@ -20,24 +20,24 @@ namespace AnticoWebApi.Services
                 dbProducts = db.Products.ToList();
             }
 
-            var vMProducts = new List<ProductViewModel>(); 
+            var vMProducts = new List<ProductViewModel>();
 
             foreach (var item in dbProducts)
             {
                 var vMProduct = item.ToProductViewModel();
-                vMProducts.Add(vMProduct); 
+                vMProducts.Add(vMProduct);
             }
-            return vMProducts; 
+            return vMProducts;
         }
 
         public IEnumerable<ProductViewModel> GetProductsByCategory(string category)
         {
-            IEnumerable<Product> dbCategoryProducts = new List<Product>(); 
+            IEnumerable<Product> dbCategoryProducts = new List<Product>();
             using (var db = new AnticoDbContext())
             {
                 var dbCategory = db.ProductCategories.FirstOrDefault(x => x.Name.ToLower() == category.ToLower());
                 if (dbCategory != null)
-                    dbCategoryProducts = db.Products.Where(x => x.CategoryId == dbCategory.Id).ToList(); 
+                    dbCategoryProducts = db.Products.Where(x => x.CategoryId == dbCategory.Id).ToList();
 
             }
             var vMProducts = new List<ProductViewModel>();
@@ -55,18 +55,18 @@ namespace AnticoWebApi.Services
             IEnumerable<Product> dbProducts;
             using (var db = new AnticoDbContext())
             {
-                dbProducts = db.Products.Where(x => x.Description.ToLower().Contains(searchString.ToLower()) || 
-                x.Name.ToLower().Contains(searchString.ToLower())).ToList();  
+                dbProducts = db.Products.Where(x => x.Description.ToLower().Contains(searchString.ToLower()) ||
+                x.Name.ToLower().Contains(searchString.ToLower())).ToList();
             }
-            var vMProducts = new List<ProductViewModel>(); 
-            
-            foreach(var item in dbProducts)
+            var vMProducts = new List<ProductViewModel>();
+
+            foreach (var item in dbProducts)
             {
                 var vMProduct = item.ToProductViewModel();
                 vMProducts.Add(vMProduct);
             }
 
-            return vMProducts; 
+            return vMProducts;
         }
 
         public IEnumerable<ProductViewModel> FindProductsByCategory(string category)
@@ -75,7 +75,7 @@ namespace AnticoWebApi.Services
             using (var db = new AnticoDbContext())
             {
                 var categoryFromDb = db.ProductCategories.Where(x => x.Name.ToLower() == category.ToLower()).FirstOrDefault();
-                dbProducts = db.Products.Where(x => x.CategoryId == categoryFromDb.Id); 
+                dbProducts = db.Products.Where(x => x.CategoryId == categoryFromDb.Id);
             }
             var vMProducts = new List<ProductViewModel>();
 

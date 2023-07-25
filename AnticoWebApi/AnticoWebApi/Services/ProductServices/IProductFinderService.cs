@@ -1,6 +1,6 @@
 ﻿using AnticoWebApi.ViewModels;
 
-namespace AnticoWebApi.Services
+namespace AnticoWebApi.Services.ProductServices
 {
     public interface IProductFinderService
     {

@@ -8,9 +8,11 @@ namespace AnticoWebApi.Mappers
         public static Product ToProductDbModel(this ProductViewModel productViewModel)
         {
             var productDB = new Product(); 
+            productDB.Id = productViewModel.Id; 
             productDB.Name = productViewModel.Name;
             productDB.Description = productViewModel.Description;
             //brak mechanizmu do konwersji enum na int
+            productDB.CategoryId = (int)productViewModel.Category; 
             productDB.IsAvaliable = productViewModel.IsAvaliable;
             productDB.FilePathPhoto = productViewModel.FilePathPhoto;
             productDB.Price = productViewModel.Price; 

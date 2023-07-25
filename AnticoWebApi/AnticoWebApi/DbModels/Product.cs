@@ -20,6 +20,8 @@ namespace AnticoWebApi.DbModels
 
         [ForeignKey("CategoryId")]
         public int CategoryId { get; set; }
+
+        [NotMapped] 
         public virtual ProductCategory Id_CategoryId { get; set; }  
 
         public bool IsAvaliable { get; set; }

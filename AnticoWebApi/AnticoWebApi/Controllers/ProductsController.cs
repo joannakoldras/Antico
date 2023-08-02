@@ -1,4 +1,5 @@
-﻿using AnticoWebApi.DbModels;
+﻿using AnticoWebApi.DataWrappers;
+using AnticoWebApi.DbModels;
 using AnticoWebApi.Services;
 using AnticoWebApi.Services.ProductServices;
 using AnticoWebApi.ViewModels;
@@ -20,19 +21,19 @@ namespace AnticoWebApi.Controllers
         }
 
         [HttpGet(Name = "Products")]
-        public IEnumerable<ProductViewModel> GetAllProducts()
+        public DataResult GetAllProducts()
         {
             return _productFinderService.GetAllProducts();
         }
 
         [HttpGet("{searchString}")]
-        public IEnumerable<ProductViewModel> FindProducts(string searchString)
+        public DataResult FindProducts(string searchString)
         {
             return _productFinderService.FindProducts(searchString);
         }
 
         [HttpGet("Categories/{category}")]
-        public IEnumerable<ProductViewModel> GetProductsByCategory(string category)
+        public DataResult GetProductsByCategory(string category)
         {
             return _productFinderService.GetProductsByCategory(category); 
         }
@@ -52,7 +53,7 @@ namespace AnticoWebApi.Controllers
         [HttpDelete]
         public bool DeleteProduct(ProductViewModel product)
         {
-            return _productCrudService.DeleteProductFromDb(product);
+            return _productCrudService.DeleteProductFromDb(product); 
         }
     }
 }

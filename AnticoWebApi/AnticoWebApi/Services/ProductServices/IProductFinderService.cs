@@ -1,12 +1,13 @@
-﻿using AnticoWebApi.ViewModels;
+﻿using AnticoWebApi.DataWrappers;
+using AnticoWebApi.ViewModels;
 
 namespace AnticoWebApi.Services.ProductServices
 {
     public interface IProductFinderService
     {
-        public IEnumerable<ProductViewModel> GetAllProducts();
-        public IEnumerable<ProductViewModel> GetProductsByCategory(string category);
+        public DataResult GetAllProducts();
+        public DataResult GetProductsByCategory(string category);
 
-        public IEnumerable<ProductViewModel> FindProducts(string searchString);
+        public DataResult FindProducts(string searchString);
     }
 }

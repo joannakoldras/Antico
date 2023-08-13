@@ -1,11 +1,12 @@
-﻿using AnticoWebApi.DbConnection;
+﻿using AnticoWebApi.DataWrappers;
+using AnticoWebApi.DbConnection;
 using AnticoWebApi.DbModels;
 
 namespace AnticoWebApi.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        public bool AddProduct(Product product)
+        public DataResult AddProduct(Product product)
         {
             try
             {
@@ -14,15 +15,15 @@ namespace AnticoWebApi.Repository
                     db.Products.Add(product);
                     db.SaveChanges(); 
                 }
-                return true;
+                return new DataResult(true, "Succesfully added");
             }
             catch (Exception exception)
             {
-                return false;
+                return new DataResult(false, exception.Message);
             }
         }
 
-        public bool UpdateProduct(Product product)
+        public DataResult UpdateProduct(Product product)
         {
             try
             {
@@ -40,19 +41,19 @@ namespace AnticoWebApi.Repository
                     }
                     else
                     {
-                        return false;
+                        return new DataResult(false, "No product found in database to update");
                     }
                 }
             }
             catch (Exception exception)
             {
-                return false;
+                return new DataResult(false, exception.Message);
             }
-            return true;
+            return new DataResult(true, "Succesfully updated in database");
 
         }
 
-        public bool DeleteProduct(Product product)
+        public DataResult DeleteProduct(Product product)
         {
             using (var db = new AnticoDbContext())
             {
@@ -64,10 +65,10 @@ namespace AnticoWebApi.Repository
                 }
                 else
                 {
-                    return false;
+                    return new DataResult(false, "No product found to delete in database");
                 }
             }
-            return true;
+            return new DataResult(true, "Product deleted from database");
         }
     }
 }

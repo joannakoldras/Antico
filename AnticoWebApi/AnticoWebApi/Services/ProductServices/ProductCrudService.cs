@@ -1,4 +1,5 @@
-﻿using AnticoWebApi.Mappers;
+﻿using AnticoWebApi.DataWrappers;
+using AnticoWebApi.Mappers;
 using AnticoWebApi.Repository;
 using AnticoWebApi.ViewModels;
 
@@ -12,21 +13,21 @@ namespace AnticoWebApi.Services.ProductServices
             productRepository = new ProductRepository();
         }
 
-        public bool AddProductToDb(ProductViewModel productVM)
+        public DataResult AddProductToDb(ProductViewModel productVM)
         {
             var product = productVM.ToProductDbModel();
             var result = productRepository.AddProduct(product);
             return result;
         }
 
-        public bool UpdateProductInDb(ProductViewModel productVM)
+        public DataResult UpdateProductInDb(ProductViewModel productVM)
         {
             var product = productVM.ToProductDbModel();
             var result = productRepository.UpdateProduct(product);
             return result;
         }
 
-        public bool DeleteProductFromDb(ProductViewModel productVM)
+        public DataResult DeleteProductFromDb(ProductViewModel productVM)
         {
             var product = productVM.ToProductDbModel();
             var result = productRepository.DeleteProduct(product);

@@ -1,11 +1,12 @@
-﻿using AnticoWebApi.ViewModels;
+﻿using AnticoWebApi.DataWrappers;
+using AnticoWebApi.ViewModels;
 
 namespace AnticoWebApi.Services.ProductServices
 {
     public interface IProductCrudService
     {
-        bool AddProductToDb(ProductViewModel productVM);
-        bool UpdateProductInDb(ProductViewModel productVM);
-        bool DeleteProductFromDb(ProductViewModel productVM);
+        DataResult AddProductToDb(ProductViewModel productVM);
+        DataResult UpdateProductInDb(ProductViewModel productVM);
+        DataResult DeleteProductFromDb(ProductViewModel productVM);
     }
 }

@@ -39,19 +39,19 @@ namespace AnticoWebApi.Controllers
         }
 
         [HttpPost]
-        public bool AddProduct(ProductViewModel product)
+        public DataResult AddProduct(ProductViewModel product)
         {
             return _productCrudService.AddProductToDb(product);
         }
 
         [HttpPut]
-        public bool UpdateProduct(ProductViewModel product)
+        public DataResult UpdateProduct(ProductViewModel product)
         {
             return _productCrudService.UpdateProductInDb(product);
         }
 
         [HttpDelete]
-        public bool DeleteProduct(ProductViewModel product)
+        public DataResult DeleteProduct(ProductViewModel product)
         {
             return _productCrudService.DeleteProductFromDb(product); 
         }

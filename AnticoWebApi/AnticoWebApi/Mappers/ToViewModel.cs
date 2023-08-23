@@ -37,7 +37,7 @@ namespace AnticoWebApi.Mappers
             userVM.Name = user.Name;
             userVM.Surname = user.Surname;
             userVM.Email = user.Email;
-            //userVM.Password = user.; mechanizm hashowania hasla
+            userVM.Password = user.EncryptedPassword; 
             userVM.UserName = user.UserName;
 
             return userVM;

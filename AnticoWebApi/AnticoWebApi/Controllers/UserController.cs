@@ -1,6 +1,7 @@
 ﻿using AnticoWebApi.DataWrappers;
 using AnticoWebApi.DbModels;
 using AnticoWebApi.Services.UserServices;
+using AnticoWebApi.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,9 @@ namespace AnticoWebApi.Controllers
         }
 
         [HttpPost("/Register")]
-        public DataResult RegisterUser(User user)
+        public DataResult RegisterUser(UserViewModel userVM)
         {
-            return _registerService.RegisterUser(user);
+            return _registerService.RegisterUser(userVM);
         }
     }
 }

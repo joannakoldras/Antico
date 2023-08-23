@@ -1,16 +1,19 @@
 ﻿using AnticoWebApi.DataWrappers;
 using AnticoWebApi.DbConnection;
 using AnticoWebApi.DbModels;
+using AnticoWebApi.Mappers;
+using AnticoWebApi.ViewModels;
 
 namespace AnticoWebApi.Services.UserServices
 {
     public class RegisterService : IRegisterService
     {
-        public DataResult RegisterUser(User user)
-        //przemapować user na UserViewModel 
+        public DataResult RegisterUser(UserViewModel userVM) 
         {
             using (var dbContext = new AnticoDbContext())
             {
+                var user = userVM.ToUserDbModel(); 
+                
                 var dbUser = dbContext.Users.
                     Where(x => x.Email == user.Email &&
                     x.UserName == user.UserName &&

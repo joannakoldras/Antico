@@ -1,18 +1,21 @@
 ﻿using AnticoWebApi.DbModels;
+using AnticoWebApi.Session;
 
 namespace AnticoWebApi.DomainModels
 {
     public class ShoppingCart
     {
         private List<Product> products { get; set; } 
+        private SessionHelper sessionHelper { get; set; } 
         public ShoppingCart()
         {
-            this.products = new List<Product>(); 
+            this.products = new List<Product>();
+            this.sessionHelper = new SessionHelper(); 
         }
 
         public void AddToShoppingCart(Product product)
         {
-            products.Add(product); 
+            sessionHelper.SetSessionWithValue(product); 
         }
 
         public bool DeleteFromShoppingCart(Product product)

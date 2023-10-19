@@ -50,12 +50,7 @@ namespace AnticoWebApi.Services.ShoppingCartServices
             try
             {
                 var products = shoppingCart.GetAllProducts();
-                List<ProductViewModel> result = new List<ProductViewModel>(); 
-                foreach (var product in products)
-                {
-                    result.Add(product.ToProductViewModel()); 
-                }
-                return new DataResult(true, result, "Data returned successfully");
+                return new DataResult(true, products, "Data returned successfully");
             }
             catch(Exception ex)
             {

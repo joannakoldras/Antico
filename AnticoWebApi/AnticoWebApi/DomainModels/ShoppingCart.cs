@@ -20,13 +20,8 @@ namespace AnticoWebApi.DomainModels
 
         public bool DeleteFromShoppingCart(Product product)
         {
-            var item = FindProductInShoppingCartById(product); 
-            if(item != null)
-            {
-                this.products.Remove(item);
-                return true;
-            }
-            return false; 
+            var result = sessionHelper.DeleteItemFromSession(product);
+            return result; 
         }
 
         public Product FindProductInShoppingCartById(Product product)
@@ -37,7 +32,7 @@ namespace AnticoWebApi.DomainModels
 
         public IEnumerable<Product> GetAllProducts()
         {
-            return products; 
+            return sessionHelper.GetAllItemsFromSession();  
         }
     }
 }
